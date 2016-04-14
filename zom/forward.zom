@@ -1,0 +1,6 @@
+test_passable
+jne,5
+forward
+goto,1
+rotate,0
+goto,1

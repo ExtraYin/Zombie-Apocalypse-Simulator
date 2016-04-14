@@ -1,0 +1,10 @@
+test_zombie,2; Real man never moves!
+je,7         ;
+test_zombie,1;
+je,9         ;
+rotate,0     ;
+goto,1       ;
+ranged_attack;
+goto,1       ;
+attack       ;
+goto,1       ;

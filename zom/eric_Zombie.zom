@@ -1,0 +1,27 @@
+test_human,1
+je,9           ; Go to melee attack
+test_wall       ;0
+je,17           ; is wall
+test_zombie,1   ;blocked
+je,11           ;random turn
+forward			; forward
+goto,1
+attack          ;melee
+goto,1
+test_random     ; block by zombie
+je,15
+rotate,0
+goto,1
+rotate,1
+goto,1
+rotate,0		; is wall, get to position
+rotate,0
+forward
+rotate,0
+rotate,0
+test_human,1
+je,26           ; Go to melee attack
+endturn
+goto,22
+attack          ;melee
+goto,22

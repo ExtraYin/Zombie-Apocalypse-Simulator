@@ -1,0 +1,51 @@
+test_zombie,2	; stategy: stays 2 blocks away from wall and lookaround
+je,40           ; Go to ranged attack
+test_zombie,1
+je,42           ; Go to melee attack
+mem,0           ; Set current slot to 0
+test_mem,0      ; find wall
+je,22           ; forward till wall
+test_mem,1      ; is facing wall
+je,28           ; inc,turn around, check possible attack when turning
+test_mem,2      ; turned 90,
+je,28           ; inc,turn around, check possible attack when turning
+test_mem,3      ; initial lookout state 1
+je,31           ;
+test_mem,4      ; lookout state 2
+je,34           ;
+test_mem,5      ; lookout state 3
+je,34           ;
+test_mem,6     ; lookout state 4
+je,37           ; go back to lookout state 1
+set,0           ; first time
+goto,1          ; check again
+test_wall       ;0
+je,44           ; is wall
+test_human,1    ;blocked
+je,46           ;random turn
+forward			; forward
+goto,1
+inc             ;1,2
+rotate,0
+goto,1
+inc             ;3
+rotate,0
+goto,1
+inc             ;4,5
+rotate,1
+goto,1
+set,3           ;6
+rotate,0
+goto,1
+ranged_attack   ;ranged
+goto,1
+attack          ;melee
+goto,1
+inc             ; is facing wall
+goto,1
+test_random     ; block by human
+je,50
+rotate,0
+goto,1
+rotate,1
+goto,1

@@ -1,0 +1,27 @@
+mem,0          ; slot 0 saves a period of time
+inc
+test_mem,25    ;  
+je,15          ;  Try to find a zombie
+test_zombie,2;
+je,11         ;
+test_zombie,1;
+je,13         ;
+rotate,0     ;
+goto,1       ;
+ranged_attack;
+goto,1       ;
+attack       ;
+goto,1       ;
+test_random  ; Try to find a zombie
+jne,19		 ; turn left or right randomly
+rotate,0     ;
+goto,20
+rotate,1     ;
+test_passable;
+jne,26
+forward
+mem,0
+set,20
+goto,1
+rotate,0
+goto,20
